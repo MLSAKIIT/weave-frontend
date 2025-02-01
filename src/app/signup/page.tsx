@@ -39,7 +39,7 @@ export default function Signup() {
 
     try {
       // Send data to backend API for user registration
-      await axios.post("http://localhost:5000/api/auth/signUp", {
+      await axios.post("http://localhost:3000/api/v1/user/signUp", {
         fullName: data.fullName,
         email: data.email,
         password: data.password,
