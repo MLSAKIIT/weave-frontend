@@ -9,18 +9,16 @@ import axios from "axios";
 import { FaEnvelope, FaLock, FaUser, FaEye } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 
-// Zod validation schema
 const signUpSchema = z.object({
   fullName: z.string().min(1, "Name cannot be empty"),
   email: z.string().email("Invalid email"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
   confirmPassword: z.string(),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords do not match",
   path: ["confirmPassword"],
 });
 
-// Define form data types using Zod schema
 type SignUpFormData = z.infer<typeof signUpSchema>;
 
 export default function Signup() {
@@ -32,18 +30,27 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Handle form submission
   const onSubmit: SubmitHandler<SignUpFormData> = async (data) => {
     setLoading(true);
-    setErrorMessage(""); // Reset error message before API call
+    setErrorMessage("");
 
     try {
-      // Send data to backend API for user registration
-      await axios.post("http://localhost:3000/api/v1/user/signUp", {
-        fullName: data.fullName,
-        email: data.email,
-        password: data.password,
-      });
+      await axios.post(
+        "http://localhost:3000/api/v1/user/signUp",
+        {
+          fullName: data.fullName,
+          email: data.email,
+          password: data.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+  
 
       alert("Signup successful! You can now log in.");
       router.push("/login");

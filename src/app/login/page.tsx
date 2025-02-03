@@ -17,9 +17,15 @@ export default function Login() {
     setErrorMessage("");
 
     try {
-      const response = await axios.post("http://localhost:3000/api/auth/signIn", {
+      const response = await axios.post("http://localhost:3000/api/v1/user/signIn", {
         email,
         password,
+      },{
+        headers:{
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        withCredentials: true
       });
       localStorage.setItem("token", response.data.token);
       router.push("/home");
