@@ -1,13 +1,22 @@
-import  Login  from "@/components/ui/login";
-import  Signup  from "@/components/ui/signup";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (
-    <>
-    <Login  />
-    
-    <Signup/>
-    </>
-  );
-}
+  const router = useRouter();
+  const [authToken, setAuthToken] = useState<string | null>(null);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token"); //For Now using localstorage
+    setAuthToken(token);
+
+    if (token) {
+      router.push("/home"); 
+    } else {
+      router.push("/login"); 
+    }
+  }, []);
+
+  return <p>Redirecting...</p>; 
+}
