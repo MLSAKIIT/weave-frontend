@@ -27,8 +27,7 @@ export default function Login() {
         },
         withCredentials: true
       });
-      localStorage.setItem("token", response.data.token);
-      router.push("/home");
+      router.push("/");
     } catch (error: any) {
       setErrorMessage(error.response?.data?.error || "Invalid login credentials");
     }

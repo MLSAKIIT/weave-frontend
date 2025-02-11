@@ -2,21 +2,30 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function Home() {
   const router = useRouter();
-  const [authToken, setAuthToken] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token"); //For Now using localstorage
-    setAuthToken(token);
+    axios
+      .get("http://localhost:3000/api/v1/auth/check-auth", { withCredentials: true }) 
+      .then((res) => {
+        if (res.data.authenticated) {
+          router.push("/home"); 
+        } else {
+          router.push("/login"); 
+        }
+      })
+      .catch((error) => {
+        console.error("Error checking auth:", error);
+        router.push("/login");
+      })
+      .finally(() => {
+        setLoading(false); 
+      });
+  }, [router]);
 
-    if (token) {
-      router.push("/home"); 
-    } else {
-      router.push("/login"); 
-    }
-  }, []);
-
-  return <p>Redirecting...</p>; 
+  return <p>{loading ? "Checking authentication..." : "Redirecting..."}</p>;
 }
