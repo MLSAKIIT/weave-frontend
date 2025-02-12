@@ -59,13 +59,18 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
-      <div className="bg-[#101426] shadow-lg flex flex-col items-center py-12 px-12 w-[22rem] h-[25rem]">
+    <div className="relative flex items-center justify-center min-h-screen bg-black">
+      {/* Blurred Background Elements */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[80px]" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[80px]" />
+
+      {/* Signup Form Container */}
+      <div className="bg-[hsla(229,41%,11%,0.4)] backdrop-blur-lg shadow-lg flex flex-col items-center py-12 px-8 w-96 rounded-2xl">
         <h1 className="text-3xl text-[#E76F04] mb-6">Sign Up</h1>
 
         {errorMessage && <p className="text-red-500 text-sm mb-4">{errorMessage}</p>}
 
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-[80%]">
           {/* Name Input */}
           <div className="flex items-center w-full mb-4 border-b border-[#E76F04]">
             <input 
@@ -75,7 +80,7 @@ export default function Signup() {
             />
             <FaUser className="text-[#E76F04]" />
           </div>
-          <p className="text-red-500 text-sm">{errors.fullName?.message}</p>
+          <p className="text-red-500 text-xs">{errors.fullName?.message}</p>
 
           {/* Email Input */}
           <div className="flex items-center w-full mb-4 border-b border-[#E76F04]">
@@ -86,7 +91,7 @@ export default function Signup() {
             />
             <FaEnvelope className="text-[#E76F04]" />
           </div>
-          <p className="text-red-500 text-sm">{errors.email?.message}</p>
+          <p className="text-red-500 text-xs">{errors.email?.message}</p>
 
           {/* Password Input */}
           <div className="flex items-center w-full mb-4 border-b border-[#E76F04]">
@@ -98,7 +103,7 @@ export default function Signup() {
             />
             <FaEye className="text-[#E76F04]" />
           </div>
-          <p className="text-red-500 text-sm">{errors.password?.message}</p>
+          <p className="text-red-500 text-xs">{errors.password?.message}</p>
 
           {/* Confirm Password Input */}
           <div className="flex items-center w-full mb-4 border-b border-[#E76F04]">
@@ -110,11 +115,12 @@ export default function Signup() {
             />
             <FaEye className="text-[#E76F04]" />
           </div>
-          <p className="text-red-500 text-sm">{errors.confirmPassword?.message}</p>
+          <p className="text-red-500 text-xs">{errors.confirmPassword?.message}</p>
 
+          {/* Terms and Conditions */}
           <div className="flex mb-4">
             <input type="checkbox" required />
-            <p className="text-white text-sm tracking-wider pl-2">I agree with terms and conditions</p>
+            <p className="text-white text-xs tracking-wider pl-2">I agree with terms and conditions</p>
           </div>
 
           {/* Sign Up Button */}
@@ -124,10 +130,15 @@ export default function Signup() {
         </form>
 
         {/* Login Link */}
-        <p className="text-gray-400 mt-4 text-sm">
+        <p className="text-gray-400 mt-4 text-xs">
           Already have an account? <a href="/login" className="text-[#E76F04] hover:underline">Log In</a>
         </p>
       </div>
+
+      {/* Help Text at the Bottom */}
+      <p className="absolute bottom-4 text-gray-500 text-xs">
+        Having trouble signing up? Contact us at xxx
+      </p>
     </div>
   );
 }
