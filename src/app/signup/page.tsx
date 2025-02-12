@@ -50,10 +50,7 @@ export default function Signup() {
           withCredentials: true,
         }
       );
-  
-
-      alert("Signup successful! You can now log in.");
-      router.push("/login");
+      router.push("/verification");
     } catch (error: any) {
       setErrorMessage(error.response?.data?.error || "Signup failed");
     } finally {
