@@ -56,15 +56,14 @@ const VerificationPage = () => {
           </div>
         ) : (
           <div className="flex items-center gap-2 text-sm">
-            {status === "success" ? (
+            {status === "success" || status === "pending" ? (
               <FaCheckCircle className="text-green-400" size={18} />
             ) : (
               <FaTimesCircle className="text-red-500" size={18} />
             )}
-            <p className={status === "success" ? "text-green-400" : "text-red-500"}>{message}</p>
+            <p className={status === "success" || status === "pending" ? "text-green-400" : "text-red-500"}>{message}</p>
           </div>
         )}
-
         {status === "success" && (
           <a href="/login" className="mt-4 text-[#E76F04] hover:underline">
             Go to Login

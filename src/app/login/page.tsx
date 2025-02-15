@@ -37,8 +37,8 @@ export default function Login() {
     <div className="relative flex items-center justify-center min-h-screen overflow-hidden star-background bg-black">
       
       {/* Blurred Background Elements */}
-      <div className="absolute top-[-100px] left-[-100px] w-72 h-72 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[100px] hidden sm:block" />
-      <div className="absolute bottom-[-100px] right-[-100px] w-72 h-72 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[100px] hidden sm:block" />
+      <div className="absolute top-[-100px] left-[-100px] w-72 h-72 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[100px] " />
+      <div className="absolute bottom-[-100px] right-[-100px] w-72 h-72 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[100px] " />
 
       {/* Login Container */}
       <div className="bg-[hsla(229,41%,11%,0.4)] backdrop-blur-sm shadow-lg flex flex-col items-center py-12 px-8 w-96 rounded-2xl">
