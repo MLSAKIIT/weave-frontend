@@ -67,7 +67,15 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.star-background {
+  background-image: url('/star-background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

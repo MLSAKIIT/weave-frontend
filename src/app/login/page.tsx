@@ -34,16 +34,16 @@ export default function Login() {
   };
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-black overflow-hidden  ">
+    <div className="relative flex items-center justify-center min-h-screen overflow-hidden star-background bg-black">
       
       {/* Blurred Background Elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[80px]" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[80px]" />
+      <div className="absolute top-[-100px] left-[-100px] w-72 h-72 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[100px] hidden sm:block" />
+      <div className="absolute bottom-[-100px] right-[-100px] w-72 h-72 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[100px] hidden sm:block" />
 
       {/* Login Container */}
-      <div className="bg-[hsla(229,41%,11%,0.4)] backdrop-blur-lg shadow-lg flex flex-col items-center py-12 px-8 w-96 rounded-2xl">
+      <div className="bg-[hsla(229,41%,11%,0.4)] backdrop-blur-sm shadow-lg flex flex-col items-center py-12 px-8 w-96 rounded-2xl">
         
-        <img src="/logo.png" alt="Weave Logo" className="w-20 h-20 mb-6" />
+        <img src="/logo.png" alt="Weave Logo" className="w-20 h-20" />
         <h1 className="text-3xl text-[#E76F04] mb-6">Log In</h1>
 
         {errorMessage && <p className="text-red-500 text-sm mb-4">{errorMessage}</p>}
@@ -54,7 +54,7 @@ export default function Login() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="bg-transparent outline-none text-white flex-1 text-sm pl-3"
+            className="bg-transparent outline-none text-white flex-1 text-sm pl-3 placeholder:text-[#E76F04]"
           />
           <FaEnvelope className="text-[#E76F04]" />
         </div>
@@ -65,7 +65,7 @@ export default function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="bg-transparent outline-none text-white flex-1 text-sm pl-3"
+            className="bg-transparent outline-none text-white flex-1 text-sm pl-3 placeholder:text-[#E76F04]"
           />
           <FaEye className="text-[#E76F04]" />
         </div>
