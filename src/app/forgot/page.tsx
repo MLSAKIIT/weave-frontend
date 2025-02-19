@@ -1,44 +1,43 @@
 "use client";
 
+import axios from "axios";
 import { useState, FormEvent } from "react";
 import { FiMail } from "react-icons/fi";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setMessage("");
+    setMessage(false)
 
-    try {
-      const response = await fetch(
-        "http://localhost:3000/api/v1/user/forgot-password",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
-
-      if (response.ok) {
-        setMessage("A password reset link has been sent to your email.");
-      } else {
-        setMessage("Failed to send reset link. Please try again.");
-      }
-    } catch (error) {
-      setMessage("An error occurred. Please try again later.");
-    } finally {
+    try{
+      const res=await axios.post('http://localhost:3000/api/v1/user/forgot-password',
+          {
+              email
+          },{
+              headers:{
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+              },
+              withCredentials:true
+          }
+      )
+      setMessage(res.data.success);
+  }catch{
+      setMessage(false)
+      console.log('Error')
+  }finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-black overflow-hidden">
+    <div>
+      {message? <div className="relative flex items-center justify-center min-h-screen bg-black overflow-hidden">
       {/* Blurred Background Elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[80px]" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[80px]" />
@@ -77,6 +76,7 @@ const ForgotPassword = () => {
         </form>
         {message && <p className="text-sm text-green-400 mt-4">{message}</p>}
       </div>
+    </div>:<div></div>}
     </div>
   );
 };

@@ -27,7 +27,9 @@ export default function Login() {
         },
         withCredentials: true
       });
-      router.push("/");
+      if(response.data.token){
+        router.push('/')
+      }
     } catch (error: any) {
       setErrorMessage(error.response?.data?.error || "Invalid login credentials");
     }
@@ -77,7 +79,7 @@ export default function Login() {
           Log In
         </Button>
         <p className="text-[#E76F04] text-[12px] hover:cursor-pointer mt-2">
-          <Link href={'/forgot-password'}>Forgot Password?</Link></p>
+          <Link href={'/forgot'}>Forgot Password?</Link></p>
         <p className="text-gray-400 mt-4 text-xs">
           Don't have an account?{" "}
           <Link href="/signup" className="text-[#E76F04] hover:underline">
