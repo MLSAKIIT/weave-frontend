@@ -76,7 +76,8 @@ export default function Login() {
         >
           Log In
         </Button>
-
+        <p className="text-[#E76F04] text-[12px] hover:cursor-pointer mt-2">
+          <Link href={'/forgot-password'}>Forgot Password?</Link></p>
         <p className="text-gray-400 mt-4 text-xs">
           Don't have an account?{" "}
           <Link href="/signup" className="text-[#E76F04] hover:underline">
