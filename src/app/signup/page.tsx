@@ -59,11 +59,10 @@ export default function Signup() {
   };
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-black">
+    <div className="relative flex items-center justify-center min-h-screen overflow-hidden star-background bg-black">
       {/* Blurred Background Elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[80px]" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[80px]" />
-
+      <div className="absolute top-[-100px] left-[-100px] w-72 h-72 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[100px] " />
+      <div className="absolute bottom-[-100px] right-[-100px] w-72 h-72 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[100px]" />
       {/* Signup Form Container */}
       <div className="bg-[hsla(229,41%,11%,0.4)] backdrop-blur-lg shadow-lg flex flex-col items-center py-12 px-8 w-96 rounded-2xl">
         <h1 className="text-3xl text-[#E76F04] mb-6">Sign Up</h1>
@@ -76,7 +75,7 @@ export default function Signup() {
             <input 
               {...register("fullName")} 
               placeholder="Full Name"
-              className="bg-transparent outline-none flex-1 text-sm pl-3 text-white"
+              className="bg-transparent outline-none flex-1 text-sm pl-3 text-white placeholder:text-[#E76F04]"
             />
             <FaUser className="text-[#E76F04]" />
           </div>
@@ -87,7 +86,7 @@ export default function Signup() {
             <input 
               {...register("email")}
               placeholder="Email"
-              className="bg-transparent outline-none flex-1 text-sm pl-3 text-white"
+              className="bg-transparent outline-none flex-1 text-sm pl-3 text-white placeholder:text-[#E76F04]"
             />
             <FaEnvelope className="text-[#E76F04]" />
           </div>
@@ -99,7 +98,7 @@ export default function Signup() {
               {...register("password")} 
               type="password" 
               placeholder="Password"
-              className="bg-transparent outline-none flex-1 text-sm pl-3 text-white"
+              className="bg-transparent outline-none flex-1 text-sm pl-3 text-white placeholder:text-[#E76F04]"
             />
             <FaEye className="text-[#E76F04]" />
           </div>
@@ -111,16 +110,16 @@ export default function Signup() {
               {...register("confirmPassword")} 
               type="password" 
               placeholder="Confirm Password"
-              className="bg-transparent outline-none flex-1 text-sm pl-3 text-white"
+              className="bg-transparent outline-none flex-1 text-sm pl-3 text-white placeholder:text-[#E76F04]"
             />
             <FaEye className="text-[#E76F04]" />
           </div>
           <p className="text-red-500 text-xs">{errors.confirmPassword?.message}</p>
 
           {/* Terms and Conditions */}
-          <div className="flex mb-4">
-            <input type="checkbox" required />
-            <p className="text-white text-xs tracking-wider pl-2">I agree with terms and conditions</p>
+          <div className="flex mb-4 justify-center" >  
+            <input type="checkbox"  required className="accent-[#E76F04]"/>
+            <p className="text-[#E76F04] text-[10px] tracking-wider pl-2">I agree with terms and conditions</p>
           </div>
 
           {/* Sign Up Button */}

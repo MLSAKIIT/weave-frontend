@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
+import { FaCheckCircle, FaTimesCircle, FaSpinner } from "react-icons/fa";
 
 const VerificationPage = () => {
   const searchParams = useSearchParams();
@@ -28,19 +29,41 @@ const VerificationPage = () => {
     }
   }, [email, token]);
 
+  // Thematic border colors based on verification status
+  const borderColor =
+    status === "success"
+      ? "border-green-400 shadow-green-500/50"
+      : status === "error"
+      ? "border-red-400 shadow-red-500/50"
+      : "border-orange-400 shadow-orange-500/50";
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
-      <div className="bg-[#101426] shadow-lg flex flex-col items-center py-12 px-12 w-[22rem] h-[15rem]">
+    <div className="flex items-center justify-center min-h-screen bg-black relative overflow-hidden star-background">
+      {/* Blurred Background Elements */}
+      <div className="absolute top-[-100px] left-[-100px] w-72 h-72 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[100px] hidden sm:block" />
+      <div className="absolute bottom-[-100px] right-[-100px] w-72 h-72 bg-[hsla(28,97%,46%,0.4)] rounded-full blur-[100px] hidden sm:block" />
+
+      {/* Verification Box */}
+      <div
+        className={`bg-[hsla(229,41%,11%,0.4)] backdrop-blur-sm shadow-lg flex flex-col items-center py-12 px-12 w-[22rem] h-[15rem] rounded-xl border ${borderColor} transition-all duration-300`}
+      >
         <h1 className="text-2xl text-[#E76F04] mb-4">Email Verification</h1>
 
         {status === "loading" ? (
-          <p className="text-white text-sm">Verifying your email...</p>
+          <div className="flex items-center gap-2 text-white text-sm">
+            <FaSpinner className="animate-spin text-orange-400" size={18} />
+            <span>Verifying your email...</span>
+          </div>
         ) : (
-          <p className={`text-sm ${status === "success" ? "text-green-400" : "text-red-500"}`}>
-            {message}
-          </p>
+          <div className="flex items-center gap-2 text-sm">
+            {status === "success" || status === "pending" ? (
+              <FaCheckCircle className="text-green-400" size={18} />
+            ) : (
+              <FaTimesCircle className="text-red-500" size={18} />
+            )}
+            <p className={status === "success" || status === "pending" ? "text-green-400" : "text-red-500"}>{message}</p>
+          </div>
         )}
-
         {status === "success" && (
           <a href="/login" className="mt-4 text-[#E76F04] hover:underline">
             Go to Login
