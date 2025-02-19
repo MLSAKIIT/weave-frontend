@@ -1,13 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { LuKeyboard, LuPlus } from "react-icons/lu";
 import Navbar from "@/components/ui/Navbar";
-import axios from "axios";
 export default function Page() {
-  const [userLoggedIn, setUserLoggedIn] = useState(false)
-  const [loading, setLoading] = useState(false)
 
   return (
     <div className="star-background bg-black min-h-screen flex flex-col relative text-white">
