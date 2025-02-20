@@ -3,20 +3,16 @@
 import Image from "next/image";
 import { LuKeyboard, LuPlus } from "react-icons/lu";
 import Navbar from "@/components/ui/Navbar";
+import DecorativeShapes from "@/components/ui/DecorativeShapes";
 export default function Page() {
 
   return (
-    <div className="star-background bg-black min-h-screen flex flex-col relative text-white">
+    <div className="star-background bg-black min-h-screen flex flex-col relative text-white overflow-hidden">
       {/* Navbar */}
       <Navbar />
+      <DecorativeShapes />
       {/* Main Container */}
-      <div className="relative flex flex-col md:flex-row items-center justify-center flex-1 p-10 gap-12 overflow-hidden">
-        {/* Large Dotted Circle (Top Left) - Hidden on Small Screens */}
-        <div className="hidden sm:block absolute top-[-100px] left-[-100px] w-96 h-96 border-8 border-dashed border-[#f1a650] rounded-full blur"></div>
-
-        {/* Small Solid Circle (Top Right) - Hidden on Small Screens */}
-        <div className="hidden sm:block absolute top-10 right-[-30px] w-16 h-16 border border-[#F97316] rounded-full"></div>
-
+      <div className="relative flex flex-col md:flex-row items-center justify-center flex-1 p-10 gap-12">
         {/* Transparent Card */}
         <div className="w-full max-w-md bg-transparent p-8 text-center relative z-10">
           <div className="flex justify-between items-center mb-4 border-b border-[#f1a650] pb-3">
