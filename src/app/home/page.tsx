@@ -1,15 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
 import { LuKeyboard, LuPlus } from "react-icons/lu";
-import { useRouter } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
 export default function HomePage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("home");
-  const router=useRouter();
   return (
     <div className="star-background bg-black min-h-screen flex flex-col relative text-white">
       {/* Navbar */}

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { LuKeyboard, LuPlus } from "react-icons/lu";
 import { usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
