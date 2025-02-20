@@ -46,7 +46,7 @@ const AboutUs = () => {
         {aboutUsData.map((item, index) => (
           <div
             key={index}
-            className={`flex items-center w-full max-w-5xl ${
+            className={`flex items-center w-full max-w-3xl ${
               index % 2 === 0 ? "flex-row" : "flex-row-reverse"
             } md:text-center`}
           >
