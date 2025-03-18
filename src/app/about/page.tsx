@@ -130,6 +130,29 @@ const AboutUs = () => {
             })}
           </div>
         </div>
+        <div className="members my-5">
+          <h1 className="bg-[#101426] text-[#E76F04] font-bold md:text-2xl w-1/3 text-center p-5 rounded-md my-3 max-md:w-1/2 m-auto">
+            MLSA Members
+          </h1>
+          <div className="domain m-20">
+            <h2 className="bg-[#101426] text-[#E76F04] font-semibold md:text-lg w-1/5 text-center px-5 py-2 rounded-xl max-md:w-full">
+              Web Development
+            </h2>
+            <div className="cards flex justify-start items-center gap-3 my-10 flex-wrap">
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+              <div className="card w-20 h-32 bg-white rounded-md"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <Footer />
     </>
